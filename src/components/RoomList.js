@@ -11,21 +11,27 @@ class RoomList extends Component {
 
 	componentDidMount() {
 	  this.roomsRef.on('child_added', snapshot => {
-		 const room = snapshot.val();
-		 room.key = snapshot.key;
+		 const room = {
+			val: snapshot.val(),
+			key: snapshot.key,
+		}
 		 this.setState({ rooms: this.state.rooms.concat( room ) })
 	  });
 	}
+	
 
 	render() {
 	  
 	return (
 		<section className="room-list">
 	    	<h3>Chat Rooms</h3>
-				{
-					this.state.rooms.map( room => 
-					 <li key={room.key}>{room.name}</li>
+				{this.state.rooms.map( room => 
+					<li key={room.name} > 
+					{room.val}
+					</li>
 				)}
+				
+				
 		  </section>
 	  );
 	}
