@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 class RoomList extends Component {
 	constructor(props) {
-	  super(props);
-		 this.state = {
-  	 rooms: [],
+		super(props);
+		this.state = {
+			rooms: [],
 			newRoomName: ''
 		 };
 		 this.roomsRef = this.props.firebase.database().ref("rooms");
@@ -13,52 +13,48 @@ class RoomList extends Component {
 	}
 
 componentDidMount() {
-	debugger
-	  this.roomsRef.on('child_added', snapshot => {
-		 const room = snapshot.val();
-		 room.key = snapshot.key;
-		 this.setState({ rooms: this.state.rooms.concat( room ) })
-	  });
-	}
-
-	handleChange(e) {
-			this.setState({ newRoomName: e.target.value });
+			this.roomsRef.on('child_added', snapshot  => {
+				const room = snapshot.val();
+				room.key = snapshot.key;
+				this.setState({ rooms: this.state.rooms.concat( room ) })
+				if (this.state.rooms.length === 1) { this.props.setActiveRoom(room) }
+			});
 		}
 
-		handleSubmit(e) {
-			e.preventDefault();
-			if (!this.state.newRoomName) {return}
 
-		}
-
-		createRoom() {
+createRoom(newRoomName) {
 			this.roomsRef.push({
-					name: this.state.newRoomName
-	});
+				name: newRoomName,
+				createdAt: Date.now(),
+			});
+			this.setState({ newRoomName: '' });
 		}
-
+		
+handleChange(e) {
+			this.setState({newRoomName: e.target.value });
+		}
+		
+handleSubmit(e) {
+			e.preventDefault();
+			this.createRoom(this.state.newRoomName);
+		}
 
 	
-	render() {
-		debugger
-			return (
-				<div className='roomlist'>
-					<form className="create-room" onSubmit={this.createRoom}>
-						<input type="text" value={this.state.newRoomName} onChange={this.handleChange}/>
-						<button type="submit">Create Room</button>
-					</form>
-
-					{this.state.rooms.map(room =>
-						<li className="room" 
-						
-						key={room.key}>
-							{room.name}
-						
-						</li>
-					)}
-				</div>
+render() {
+		return (
+			<section className="room-list">
+					{this.state.rooms.map( room => 
+							<li key={room.key} >
+								<button className="room-name" onClick={ () => this.props.setActiveRoom(room) }>{ room.name }</button>
+							</li>
+							)}
+					<form id="create-room" onSubmit={ (e) => { this.handleSubmit(e) } }>
+							<input type="text" value={ this.state.newRoomName } onChange={ this.handleChange.bind(this) } name="newRoomName" placeholder="New Room" />
+							<input type="submit" value="+" />
+						</form>
+				</section>
 			);
 		}
 	}
 
-	export default RoomList;
+export default RoomList;
