@@ -40,7 +40,7 @@ render() {
           <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)} />
         </aside>
         <aside id="sidebar-bottom">
-            <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user}/>
+             <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user}/>
         </aside>
         <MessageList firebase={firebase} activeRoom={this.state.activeRoom} />
       </div>
