@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+ background-color:	#F0FFFF;
 }
 
 .App-logo {
@@ -21,6 +22,17 @@
 
 .App-link {
   color: #61dafb;
+}
+
+h1{
+  color: #5F9EA0;
+  text-align: center;
+  font-size: 36px;
+}
+
+.room-list{
+  color: #00FFFF;
+  position: static;
 }
 
 @keyframes App-logo-spin {

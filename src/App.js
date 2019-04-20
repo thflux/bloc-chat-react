@@ -4,6 +4,11 @@ import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
 import User from './components/User';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+
 
 // Initialize Firebase
   var config = {
@@ -37,16 +42,17 @@ render() {
       <div className="App">
         <aside id="sidebar">
           <h1 className="App-title">Bloc Chat</h1>
-          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)} />
+          <RoomList firebase={firebase} activeRoom={this.state.activeRoom}setActiveRoom={this.setActiveRoom.bind(this)} user={this.state.user}/>
         </aside>
         <aside id="sidebar-bottom">
-             <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user}/>
+            <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user}/>
         </aside>
-        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} />
+        <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user}/>
       </div>
-      );
-    }
+    );
   }
+}
 
-  export default App;
+export default App;
+
   
