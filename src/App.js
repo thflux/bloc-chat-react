@@ -26,6 +26,7 @@ class App extends Component {
     super(props);
     this.state = {
       activeRoom: null,
+      user: null
     };
   }
   

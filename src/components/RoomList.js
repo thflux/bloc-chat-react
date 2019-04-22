@@ -32,16 +32,16 @@ createRoom(newRoomName) {
 		
 handleChange(e) {
 	this.setState({newRoomName: e.target.value });
-		}
+}
 		
 handleSubmit(e) {
 	e.preventDefault();
 	this.createRoom(this.state.newRoomName);
-		}
+}
 
 removeRoom(room) {
 	this.roomsRef.child(room.key).remove();
-			}
+}
 
 	
 render() {
@@ -50,6 +50,8 @@ render() {
 			{this.state.rooms.map( room => 
 				<li key={room.key} >
 					<button className="room-name" onClick={ () => this.props.setActiveRoom(room) }>{ room.name }</button>
+					<button type="button" onClick={(e) => this.removeRoom(room)}> - </button>
+
 				</li>
 			)}
 			<form id="create-room" onSubmit={ (e) => { this.handleSubmit(e) } }>
