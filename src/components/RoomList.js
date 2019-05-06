@@ -50,7 +50,7 @@ render() {
 			{this.state.rooms.map( room => 
 				<li key={room.key} >
 					<button className="room-name" onClick={ () => this.props.setActiveRoom(room) }>{ room.name }</button>
-					<button type="button" onClick={(e) => this.removeRoom(room)}> - </button>
+					<button type="button" onClick={(e) => this.removeRoom(room)}> Delete Room </button>
 
 				</li>
 			)}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Button} from 'react-bootstrap';
 
 
@@ -55,9 +54,9 @@ removeMessage(activeRoom) {
 }
 
 showMessages(activeRoom) {
-	this.setState({ displayedMessages: this.state.allMessages.filter( message => message.roomId === activeRoom.key ) });
+		this.setState({ displayedMessages: this.state.allMessages.filter( message => message.roomId === activeRoom.key ) });
 	}
-			
+				
 render() {
 	return (
 		<main id="messages-component">
@@ -74,9 +73,7 @@ render() {
 			<Moment element="span" format="MM/DD/YY hh:mm A" className="sent-at">
 				{ message.sentAt }
 			</Moment>
-			<Button type="button" className="btn-remove-msg" onClick={() => this.removeMessage(message)} >
-				<FontAwesomeIcon icon='minus-circle'/>
-			</Button>
+			<Button type="button" className="btn-remove-msg" onClick={() => this.removeMessage(message)}> Delete Message </Button>
 		</li>
 	)}
 	</ul>

@@ -1,39 +1,315 @@
-.App {
-  text-align: center;
- background-color:	#F0FFFF;
+#sidebar {
+  background: #87e8fa;
+  border-right: .25rem solid #FFF0F5;
+  box-shadow: 1px 0px 5px rgba(0,0,0,0.3);
+  height: 100%;
+  overflow: scroll;
+  position: fixed;
+  width: 25%;
+  z-index: 3;
+}
+
+#sidebar-bottom {
+  background: #ece1e7;
+  border-right: .25rem solid 	#FFF0F5;
+  box-shadow: 1px 0px 5px rgba(0,0,0,0.3);
+  height: 10%;
+  overflow: scroll;
+  position: fixed;
+  width: 25%;
+  z-index: 4;
+  bottom: 0;
+}
+
+#sidebar button:hover span {
+  color: rgb(0, 120, 60);
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  height: 80px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #222;
+  height: 200px;
+  padding: 20px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-title {
+  font-size: 1.65em;
+  margin-left: -300px;
+  margin-top: 0px;
+  height: 60px;
+  color: #F5FFFA;
+  text-shadow: 3px 4px #4682B4;
+  
 }
 
-h1{
-  color: #5F9EA0;
-  text-align: center;
-  font-size: 36px;
+
+
+
+/* Message List Styling  */
+
+#messages-component {
+  position: fixed;
+  background: white;
+  left: 25%;
+  width: 75%;
+  height: 100vh;
+  overflow: scroll;
 }
 
-.room-list{
-  color: #00FFFF;
-  position: static;
+h2.room-name {
+  color: rgb(28, 222, 234);
+  border-bottom: 2px solid hsla(44, 30%, 52%, 0.2);
+  font-family: 'Rockwell', cursive;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 1rem 1rem 1rem;
 }
+
+#message-list {
+  padding-bottom: 4rem;
+  width: 93%;
+}
+
+#message-list li {
+  background-color: white;
+  list-style-type: none;
+}
+
+#message-list li:nth-child(odd) {
+  background-color: rgba(66, 61, 48, 0.1);
+}
+
+.username {
+  color: #a0a0a0;
+  font-weight: bold;
+  padding-top: .15rem;
+  margin: 0;
+}
+
+.content {
+  display: inline-block;
+  font-size: 1rem;
+  padding-bottom: .5rem;
+}
+
+.btn-remove-msg {
+  color: #ff911d;
+  border: none;
+  background:none;
+}
+
+.btn-remove-msg:hover {
+  cursor: pointer;
+}
+
+.sent-at {
+  float: right;
+  font-size: .75rem;
+  font-weight: bolder;
+  padding: .25rem;
+}
+
+.msg-updated-at {
+  float: right;
+  font-size: .75rem;
+  background: none;
+  padding-top: .5rem;
+  padding-right: .5rem;
+}
+
+#create-message {
+  bottom: 0;
+  height: 40px;
+  padding: 1rem;
+  position: fixed;
+  width: 75%;
+}
+#create-message input[type="text"] {
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  margin: 0;
+  padding: 0.5;
+  width: 85%;
+}
+#create-message input[type="submit"] {
+  background: rgb(255, 242, 244);
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #E6E6FA;
+  margin-left: 1.5%;
+  padding: 0.33rem;
+  width: 8%;
+}
+#create-message input[type="submit"]:hover {
+  background: #af629d;
+  cursor: pointer;
+}
+
+button.btn-remove-msg {
+  color: red;
+  border: 1px black ridge;
+  border-radius: 4px;
+  position: relative;
+  right: -76%;
+  top: 14%;
+  
+}
+
+/* Room List Styling */
+
+.room-name {
+  border:none;
+  outline: none;
+  background-color: transparent;
+  color: #F5FFFA;
+  height: 30px;
+  margin-left: 2px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: 1px 2px #4682B4;
+}
+
+.room-name:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #ece1e7;
+  border-radius: 5px;
+}
+
+.room-name:active {
+  box-shadow: 0 2px;
+  transform: translateY(3px);
+}
+
+#room-list .remove {
+  float: right;
+  font-size: 0.7rem;
+  color: rgb(0, 140, 50);
+  
+}
+
+button{
+  color: red;
+}
+
+#room-list li:hover .remove {
+  color: hsl(0, 150, 60);
+}
+
+form#create-room {
+  margin-right: 0;
+  right: 0;
+  top: -2px;
+  padding: 1rem;
+  position: absolute;
+  width: 50%;
+  height: 40px;
+}
+
+#create-room label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+#create-room input[type="text"] {
+  width: 87%;
+  background: #faf1fb;
+  padding: 0.3rem 0.66rem;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 3px;
+  height: 2.5rem;
+  float: left;
+  font-size: 1rem;
+  font-weight: bold;
+  
+  
+}
+
+#create-room input[type="submit"] {
+  border: none;
+  padding: 0.1rem;
+  background: #af629d;
+  width: 10%;
+  font-size: 1.5rem;
+  float: left;
+  line-height: 0.7rem;
+  height: 2.5rem;
+  margin-left: 3%;
+  border-radius: 3px;
+  
+}
+
+#create-room input[type="submit"]:hover {
+  cursor: pointer;
+  background: white;
+}
+
+#create-room input[type="submit"]:active {
+  box-shadow: 0 2px;
+  transform: translateY(3px);
+}
+
+/*  User Styling    */
+
+#user-display {
+  background: rgb(0, 200, 40);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  height: 30;
+  padding: 0.5rem;
+  position: absolute;
+}
+
+.user-display-name {
+  float: left;
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 50px;
+  margin-left: 0.75rem;
+}
+
+.sign-in-out {
+  background: rgb(255, 242, 244);
+  border-radius: 5px;
+  border: none;
+  float: right;
+  height: 35px;
+  padding: 0 0.5rem;
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}
+
+.sign-in-out:hover {
+  background: white;
+}
+
+.sign-in-out span {
+  color: #af629d;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 30px;
+  margin-right: 0.5rem;
+  transform: translateY(-0.5rem);
+  vertical-align: bottom;
+}
+
+.sign-in-out input[type="submit"]:active {
+  box-shadow: 0 2px;
+  transform: translateY(3px);
+}
+
+
+
+
+
 
 @keyframes App-logo-spin {
   from {
